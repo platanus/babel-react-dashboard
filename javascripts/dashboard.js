@@ -1,5 +1,11 @@
 "use strict";
 
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var React = _interopRequire(require("react"));
+
+var Helpers = _interopRequire(require("./helpers"));
+
 var apiKey = "AIzaSyAqHIdFnDLnjeWa1CRBCmq879oel4KsC6w";
 
 var VideoSearch = React.createClass({

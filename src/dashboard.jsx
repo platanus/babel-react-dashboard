@@ -1,3 +1,6 @@
+import React from 'react';
+import Helpers from './helpers';
+
 const apiKey = 'AIzaSyAqHIdFnDLnjeWa1CRBCmq879oel4KsC6w';
 
 let VideoSearch = React.createClass({

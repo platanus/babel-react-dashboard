@@ -44,3 +44,5 @@ var Helpers = (function () {
 
   return Helpers;
 })();
+
+module.exports = Helpers;
