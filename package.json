@@ -7,7 +7,8 @@
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
     "gulp": "^3.8.11",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "url-parse": "*"
   },
   "dependencies": {
     "react": "^0.12.2"

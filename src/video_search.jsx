@@ -1,4 +1,5 @@
 import React from 'react';
+import parseURL from 'url-parse';
 
 let VideoSearch = React.createClass({
   render() {
@@ -10,7 +11,8 @@ let VideoSearch = React.createClass({
   },
 
   searchVideo(evt) {
-    let video = evt.target.value;
+    let url = evt.target.value;
+    let video = parseURL(url, true).query.v;
     this.props.onChange(video);
   }
 });
