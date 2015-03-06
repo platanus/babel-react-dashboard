@@ -1,21 +1,42 @@
 const apiKey = 'AIzaSyAqHIdFnDLnjeWa1CRBCmq879oel4KsC6w';
 
-let url = `https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`
-
-let Dashboard = React.createClass({
+let VideoSearch = React.createClass({
   render: function() {
     return (
       <div>
-        <h2>Visit count</h2>
-        <p>{ this.props.visits }</p>
+        <input type="text" onChange={this.searchVideo} placeholder="Ingresa un video" />
       </div>
     );
+  },
+
+  searchVideo: function(evt) {
+    let video = evt.target.value;
+    this.props.onChange(video);
   }
 });
 
-Helpers.ajaxGet(url, function(data) {
-  React.render(
-    <Dashboard visits={data.items[0].statistics.viewCount} />,
-    document.getElementById('example');
-  );
+let Dashboard = React.createClass({
+
+  getInitialState: function() {
+    return { visits: 0 };
+  },
+
+  render: function() {
+    return (
+      <div>
+        <VideoSearch onChange={ this.refresh } />
+        <h2>Visit count</h2>
+        <p>{ this.state.visits }</p>
+      </div>
+    );
+  },
+
+  refresh: function(video) {
+    let url = `https://www.googleapis.com/youtube/v3/videos?id=${video}&key=${apiKey}&part=snippet,contentDetails,statistics,status`
+    Helpers.ajaxGet(url, (data) => {
+      this.setState({ visits: data.items[0].statistics.viewCount });
+    });
+  }
 });
+
+React.render(<Dashboard />, document.getElementById('application'));

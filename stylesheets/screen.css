@@ -1,0 +1,23 @@
+html {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 2em;
+  width: 100%;
+  color: white;
+  background: hsl(0, 70%, 50%);
+  padding: 0 1em;
+  margin-top: 0;
+}
+
+#application {
+  padding: 0 3em;
+}
+
+input[type=text] {
+  border: 1px solid hsl(0, 70%, 50%);
+  font-size: 1.2em;
+  padding: 0.25em;
+}
