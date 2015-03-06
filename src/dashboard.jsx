@@ -46,7 +46,7 @@ let Dashboard = React.createClass({
   renderError: function() {
     if (this.state.error) {
       return (
-        <div>Ocurrió un error!</div>
+        <div>{ "This video doesn't exist!" }</div>
       );
     }
   }

@@ -63,7 +63,7 @@ var Dashboard = React.createClass({
       return React.createElement(
         "div",
         null,
-        "Ocurrió un error!"
+        "This video doesn't exist!"
       );
     }
   }
