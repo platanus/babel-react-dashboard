@@ -6,24 +6,9 @@ var React = _interopRequire(require("react"));
 
 var Helpers = _interopRequire(require("./helpers"));
 
+var VideoSearch = _interopRequire(require("./video_search"));
+
 var apiKey = "AIzaSyAqHIdFnDLnjeWa1CRBCmq879oel4KsC6w";
-
-var VideoSearch = React.createClass({
-  displayName: "VideoSearch",
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement("input", { type: "text", onChange: this.searchVideo, placeholder: "Ingresa un video" })
-    );
-  },
-
-  searchVideo: function searchVideo(evt) {
-    var video = evt.target.value;
-    this.props.onChange(video);
-  }
-});
 
 var Dashboard = React.createClass({
   displayName: "Dashboard",

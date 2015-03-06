@@ -1,22 +1,8 @@
 import React from 'react';
 import Helpers from './helpers';
+import VideoSearch from './video_search';
 
 const apiKey = 'AIzaSyAqHIdFnDLnjeWa1CRBCmq879oel4KsC6w';
-
-let VideoSearch = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <input type="text" onChange={this.searchVideo} placeholder="Ingresa un video" />
-      </div>
-    );
-  },
-
-  searchVideo: function(evt) {
-    let video = evt.target.value;
-    this.props.onChange(video);
-  }
-});
 
 let Dashboard = React.createClass({
 
