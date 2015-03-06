@@ -1,0 +1,15 @@
+{
+  "name": "YoutubeDashboard",
+  "version": "0.0.1",
+  "author": "Arturo Puentes",
+  "description": "",
+  "devDependencies": {
+    "babelify": "^5.0.4",
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "react": "^0.12.2"
+  }
+}
