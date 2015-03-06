@@ -18,7 +18,7 @@ let VideoSearch = React.createClass({
 let Dashboard = React.createClass({
 
   getInitialState: function() {
-    return { visits: 0 };
+    return { visits: 0, error: false };
   },
 
   render: function() {
@@ -26,6 +26,7 @@ let Dashboard = React.createClass({
       <div>
         <VideoSearch onChange={ this.refresh } />
         <h2>Visit count</h2>
+        { this.renderError() }
         <p>{ this.state.visits }</p>
       </div>
     );
@@ -34,9 +35,22 @@ let Dashboard = React.createClass({
   refresh: function(video) {
     let url = `https://www.googleapis.com/youtube/v3/videos?id=${video}&key=${apiKey}&part=snippet,contentDetails,statistics,status`
     Helpers.ajaxGet(url, (data) => {
-      this.setState({ visits: data.items[0].statistics.viewCount });
+      if (data.items[0]) {
+        this.setState({ visits: data.items[0].statistics.viewCount, error: false });
+      } else {
+        this.setState({ visits: 0, error: true });
+      }
     });
+  },
+
+  renderError: function() {
+    if (this.state.error) {
+      return (
+        <div>Ocurrió un error!</div>
+      );
+    }
   }
+
 });
 
 React.render(<Dashboard />, document.getElementById('application'));

@@ -23,7 +23,7 @@ var Dashboard = React.createClass({
   displayName: "Dashboard",
 
   getInitialState: function getInitialState() {
-    return { visits: 0 };
+    return { visits: 0, error: false };
   },
 
   render: function render() {
@@ -36,6 +36,7 @@ var Dashboard = React.createClass({
         null,
         "Visit count"
       ),
+      this.renderError(),
       React.createElement(
         "p",
         null,
@@ -49,9 +50,24 @@ var Dashboard = React.createClass({
 
     var url = "https://www.googleapis.com/youtube/v3/videos?id=" + video + "&key=" + apiKey + "&part=snippet,contentDetails,statistics,status";
     Helpers.ajaxGet(url, function (data) {
-      _this.setState({ visits: data.items[0].statistics.viewCount });
+      if (data.items[0]) {
+        _this.setState({ visits: data.items[0].statistics.viewCount, error: false });
+      } else {
+        _this.setState({ visits: 0, error: true });
+      }
     });
+  },
+
+  renderError: function renderError() {
+    if (this.state.error) {
+      return React.createElement(
+        "div",
+        null,
+        "Ocurrió un error!"
+      );
+    }
   }
+
 });
 
 React.render(React.createElement(Dashboard, null), document.getElementById("application"));
